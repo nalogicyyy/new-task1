@@ -163,5 +163,28 @@ bool addStudent(const Student& s) {
             p = p->next;
         }
     }
+    void sortById() {
+        if (size <= 1) {
+            cout << "学生数量不足，无需排序！" << endl;
+            return;
+        }
+
+        StudentNode *p, *q;
+        for (int i = 0; i < size - 1; i++) {
+            p = head->next;
+            q = p->next;
+            while (q != nullptr) {
+                if (p->data.id > q->data.id) {
+                    Student temp = p->data;
+                    p->data = q->data;
+                    q->data = temp;
+                }
+                p = q;
+                q = q->next;
+            }
+        }
+        cout << "学生信息按学号升序排序完成！" << endl;
+    }
+
 
 };
