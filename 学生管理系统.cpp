@@ -201,3 +201,97 @@ void showMenu() {
     cout << "  0. 退出系统" << endl;
     cout << "请输入您的选择：";
 }
+int main() {
+
+    StudentList list; 
+    int choice;      
+    string id, name, major;
+    int age;
+    float score;
+
+    while (true) {
+        showMenu();
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                // 新增学生
+                cout << "\n请输入学生信息：" << endl;
+                cout << "学号：";
+                cin >> id;
+                cout << "姓名：";
+                cin >> name;
+                cout << "年龄：";
+                cin >> age;
+                cout << "专业：";
+                cin >> major;
+                cout << "成绩：";
+                cin >> score;
+                list.addStudent(Student(name, id, major, age, score));
+                system("pause"); // 暂停，方便查看结果
+                system("cls");   // 清屏，回到菜单
+                break;
+
+            case 2:
+                // 删除学生
+                cout << "\n请输入要删除的学生学号：";
+                cin >> id;
+                list.deleteStudent(id);
+                system("pause");
+                system("cls");
+                break;
+
+            case 3:
+                // 修改学生
+                cout << "\n请输入要修改的学生学号：";
+                cin >> id;
+                list.updateStudent(id);
+                system("pause");
+                system("cls");
+                break;
+
+            case 4:
+                // 查询学生
+                cout << "\n请选择查询方式：1. 按学号查询  2. 按姓名查询" << endl;
+                cout << "请输入选择：";
+                int type;
+                cin >> type;
+                list.searchStudent(type);
+                system("pause");
+                system("cls");
+                break;
+
+            case 5:
+                // 显示所有学生
+                list.showAllStudents();
+                system("pause");
+                system("cls");
+                break;
+
+            case 6:
+                // 按学号排序
+                list.sortById();
+                system("pause");
+                system("cls");
+                break;
+
+            case 7:
+                // 统计人数
+                cout << "\n当前学生总人数：" << list.getStudentCount() << "人" << endl;
+                system("pause");
+                system("cls");
+                break;
+
+            case 0:
+                // 退出系统
+                cout << "\n感谢使用学生管理系统，再见！" << endl;
+                return 0;
+
+            default:
+                cout << "\n输入错误，请重新输入！" << endl;
+                break;
+        }
+    }
+
+    return 0;
+}
