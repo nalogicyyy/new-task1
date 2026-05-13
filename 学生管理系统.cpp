@@ -74,4 +74,24 @@ bool addStudent(const Student& s) {
         cout << "✅ 学生信息添加成功！" << endl;
         return true;
     }
+    bool deleteStudent(const string& id) {
+        StudentNode* pre = head;
+        StudentNode* cur = head->next;
+
+        while (cur != nullptr && cur->data.id != id) {
+            pre = cur;
+            cur = cur->next;
+        }
+
+        if (cur == nullptr) {
+            cout << "❌ 未找到该学号的学生，删除失败！" << endl;
+            return false;
+        }
+
+        pre->next = cur->next;
+        delete cur;
+        size--;
+        cout << "✅ 学生信息删除成功！" << endl;
+        return true;
+    }
 };
