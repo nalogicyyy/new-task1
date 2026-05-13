@@ -61,7 +61,7 @@ StudentList(){
 }
 bool addStudent(const Student& s) {
         if (findNodeById(s.id) != nullptr) {
-            cout << "❌ 该学号已存在，添加失败！" << endl;
+            cout << "该学号已存在，添加失败！" << endl;
             return false;
         }
         StudentNode* newNode = new StudentNode(s);
@@ -71,7 +71,7 @@ bool addStudent(const Student& s) {
         }
         p->next = newNode;
         size++;
-        cout << "✅ 学生信息添加成功！" << endl;
+        cout << "学生信息添加成功！" << endl;
         return true;
     }
     bool deleteStudent(const string& id) {
@@ -84,7 +84,7 @@ bool addStudent(const Student& s) {
         }
 
         if (cur == nullptr) {
-            cout << "❌ 未找到该学号的学生，删除失败！" << endl;
+            cout << "未找到该学号的学生，删除失败！" << endl;
             return false;
         }
 
@@ -92,6 +92,25 @@ bool addStudent(const Student& s) {
         delete cur;
         size--;
         cout << "✅ 学生信息删除成功！" << endl;
+        return true;
+    }
+    bool updateStudent(const string& id) {
+        StudentNode* node = findNodeById(id);
+        if (node == nullptr) {
+            cout << "未找到该学号的学生，修改失败！" << endl;
+            return false;
+        }
+
+        cout << "请输入新的姓名（原：" << node->data.name << "）：";
+        cin >> node->data.name;
+        cout << "请输入新的年龄（原：" << node->data.age << "）：";
+        cin >> node->data.age;
+        cout << "请输入新的专业（原：" << node->data.major << "）：";
+        cin >> node->data.major;
+        cout << "请输入新的成绩（原：" << node->data.score << "）：";
+        cin >> node->data.score;
+
+        cout << "学生信息修改成功！" << endl;
         return true;
     }
 };
