@@ -59,4 +59,19 @@ StudentList(){
     }
     size=0;
 }
+bool addStudent(const Student& s) {
+        if (findNodeById(s.id) != nullptr) {
+            cout << "❌ 该学号已存在，添加失败！" << endl;
+            return false;
+        }
+        StudentNode* newNode = new StudentNode(s);
+        StudentNode* p = head;
+        while (p->next != nullptr) {
+            p = p->next;
+        }
+        p->next = newNode;
+        size++;
+        cout << "✅ 学生信息添加成功！" << endl;
+        return true;
+    }
 };
