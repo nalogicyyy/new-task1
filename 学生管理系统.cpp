@@ -148,5 +148,20 @@ bool addStudent(const Student& s) {
             }
         }
     }
+ void showAllStudents() const {
+        if (size == 0) {
+            cout << "学生列表为空，无数据可显示！" << endl;
+            return;
+        }
+
+        cout << "\n所有学生信息（共" << size << "人）：" << endl;
+        StudentNode* p = head->next;
+        int num = 1;
+        while (p != nullptr) {
+            cout << "[" << num++ << "] ";
+            p->data.Showinfo();
+            p = p->next;
+        }
+    }
 
 };
