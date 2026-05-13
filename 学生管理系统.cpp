@@ -185,6 +185,19 @@ bool addStudent(const Student& s) {
         }
         cout << "学生信息按学号升序排序完成！" << endl;
     }
-
+ int getStudentCount() const {
+        return size;
+    }
 
 };
+void showMenu() {
+    cout << "  1. 新增学生信息" << endl;
+    cout << "  2. 删除学生信息" << endl;
+    cout << "  3. 修改学生信息" << endl;
+    cout << "  4. 查询学生信息" << endl;
+    cout << "  5. 显示所有学生" << endl;
+    cout << "  6. 按学号排序" << endl;
+    cout << "  7. 统计学生人数" << endl;
+    cout << "  0. 退出系统" << endl;
+    cout << "请输入您的选择：";
+}
