@@ -113,4 +113,40 @@ bool addStudent(const Student& s) {
         cout << "学生信息修改成功！" << endl;
         return true;
     }
+    void searchStudent(int type) const {
+        if (size == 0) {
+            cout << "学生列表为空，无数据可查询！" << endl;
+            return;
+        }
+
+        string keyword;
+        if (type == 1) {
+            cout << "请输入要查询的学号：";
+            cin >> keyword;
+            StudentNode* node = findNodeById(keyword);
+            if (node != nullptr) {
+                cout << "\n查询结果：" << endl;
+                node->data.Showinfo();
+            } else {
+                cout << "未找到该学号的学生！" << endl;
+            }
+        } else if (type == 2) {
+            cout << "请输入要查询的姓名：";
+            cin >> keyword;
+            StudentNode* p = head->next;
+            bool found = false;
+            cout << "\n查询结果：" << endl;
+            while (p != nullptr) {
+                if (p->data.name == keyword) {
+                    p->data.Showinfo();
+                    found = true;
+                }
+                p = p->next;
+            }
+            if (!found) {
+                cout << "未找到该姓名的学生！" << endl;
+            }
+        }
+    }
+
 };
